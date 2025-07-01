@@ -1,26 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Floral White palette */
+  --color-floral_white-100: #634c00;
+  --color-floral_white-200: #c69800;
+  --color-floral_white-300: #ffcd2a;
+  --color-floral_white-400: #ffe48d;
+  --color-floral_white-500: #fffcf2;
+  --color-floral_white-600: #fffcf3;
+  --color-floral_white-700: #fffdf6;
+  --color-floral_white-800: #fffef9;
+  --color-floral_white-900: #fffefc;
+
+  /* Timberwolf palette */
+  --color-timberwolf-100: #2d2821;
+  --color-timberwolf-200: #5a5141;
+  --color-timberwolf-300: #877962;
+  --color-timberwolf-400: #ab9f8b;
+  --color-timberwolf-500: #ccc5b9;
+  --color-timberwolf-600: #d6d0c6;
+  --color-timberwolf-700: #e0dcd4;
+  --color-timberwolf-800: #eae8e3;
+  --color-timberwolf-900: #f5f3f1;
+
+  /* Black Olive palette */
+  --color-black_olive-100: #0d0c0c;
+  --color-black_olive-200: #1a1917;
+  --color-black_olive-300: #272523;
+  --color-black_olive-400: #34312e;
+  --color-black_olive-500: #403d39;
+  --color-black_olive-600: #6a655e;
+  --color-black_olive-700: #928c84;
+  --color-black_olive-800: #b6b2ad;
+  --color-black_olive-900: #dbd9d6;
+
+  /* Eerie Black palette */
+  --color-eerie_black-100: #070707;
+  --color-eerie_black-200: #0f0e0e;
+  --color-eerie_black-300: #161615;
+  --color-eerie_black-400: #1e1d1b;
+  --color-eerie_black-500: #252422;
+  --color-eerie_black-600: #53514c;
+  --color-eerie_black-700: #807d76;
+  --color-eerie_black-800: #aba8a4;
+  --color-eerie_black-900: #d5d4d1;
+
+  /* Flame palette */
+  --color-flame-100: #321205;
+  --color-flame-200: #652309;
+  --color-flame-300: #97350e;
+  --color-flame-400: #ca4713;
+  --color-flame-500: #eb5e28;
+  --color-flame-600: #ef7f53;
+  --color-flame-700: #f39f7e;
+  --color-flame-800: #f7bfa9;
+  --color-flame-900: #fbdfd4;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer components {
+  .btn-fancy {
+    @apply relative inline-block m-2;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .btn-fancy a,
+  .btn-fancy button {
+    @apply block text-[var(--color-floral_white-500)] font-semibold text-base
+           uppercase text-center no-underline bg-[#ed3526]
+           px-4 py-2 transition-all;
+    position: relative;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    box-shadow:
+      inset 0 1px 0 var(--color-floral_white-500),
+      0 4px 0 var(--color-eerie_black-500);
+    border-radius: 4px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .btn-fancy a:hover,
+  .btn-fancy button:hover {
+    @apply bg-[#d0281f];
+  }
+
+  .btn-fancy a:active,
+  .btn-fancy button:active {
+    @apply bg-[#ca2715] top-[2px];
+    box-shadow:
+      inset 0 3px 0 var(--color-eerie_black-500),
+      0 0 0 transparent;
+  }
+
+  .btn-fancy::after {
+    content: "";
+    @apply absolute z-[-1] w-full h-full bottom-[-6px] left-0
+           bg-[var(--color-eerie_black-500)] rounded-sm;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+
+
+@layer base {
+  html {
+    font-family: 
+      'Avenir Next', 
+      Montserrat, 
+      'Helvetica Neue', 
+      Arial, 
+      sans-serif;
+  }
 }
